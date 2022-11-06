@@ -38,4 +38,11 @@ public class MyRESTController {
         return client;
     }
 
+    //update client через id
+    @PutMapping("/clients")
+    public Client updateClient(@RequestBody Client client) {
+        clientService.saveClient(client);
+        return client;
+    }
+
 }
