@@ -45,4 +45,13 @@ public class MyRESTController {
         return client;
     }
 
+    @DeleteMapping("/clients/{id}")
+    public String deleteClient(@PathVariable int id) {
+        Client client = clientService.getClient(id);
+        if (client==null) {
+            throw new  NoSuchEmployeeException("Клиента под номером " + id + " нет в базе данных");
+        }
+        clientService.deleteClient(id);
+        return "Клиент под номером " + id + " удален из базы... :( ";
+    }
 }
